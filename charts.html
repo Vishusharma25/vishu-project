@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Student Analytics Dashboard - Visualize student data with interactive charts">
+    <title>Analytics Dashboard - Student Records</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .charts-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: var(--spacing-xl);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .chart-card {
+            background: var(--bg-primary);
+            padding: var(--spacing-xl);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+        }
+
+        .chart-card h3 {
+            color: var(--text-primary);
+            margin-bottom: var(--spacing-lg);
+            font-size: 1.25rem;
+        }
+
+        .chart-wrapper {
+            position: relative;
+            height: 300px;
+        }
+
+        .back-btn {
+            margin-bottom: var(--spacing-xl);
+        }
+
+        @media (max-width: 768px) {
+            .charts-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="logo">
+                    <span class="logo-icon">📊</span>
+                    Analytics Dashboard
+                </h1>
+                <div class="header-actions">
+                    <a href="index.html" class="btn btn-secondary">
+                        <span>←</span> Back to Main
+                    </a>
+                    <button id="themeToggle" class="btn btn-secondary">
+                        <span id="themeIcon">🌙</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Statistics Summary -->
+            <section class="stats-section">
+                <div class="stat-card">
+                    <div class="stat-icon">👥</div>
+                    <div class="stat-info">
+                        <div class="stat-value" id="totalStudents">0</div>
+                        <div class="stat-label">Total Students</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">📊</div>
+                    <div class="stat-info">
+                        <div class="stat-value" id="avgGPA">0.00</div>
+                        <div class="stat-label">Average GPA</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">📚</div>
+                    <div class="stat-info">
+                        <div class="stat-value" id="totalCourses">0</div>
+                        <div class="stat-label">Active Courses</div>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">🎯</div>
+                    <div class="stat-info">
+                        <div class="stat-value" id="avgAttendance">0%</div>
+                        <div class="stat-label">Avg Attendance</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Charts -->
+            <section class="charts-container">
+                <!-- GPA Distribution Chart -->
+                <div class="chart-card">
+                    <h3>GPA Distribution</h3>
+                    <div class="chart-wrapper">
+                        <canvas id="gpaChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Course Enrollment Chart -->
+                <div class="chart-card">
+                    <h3>Students by Course</h3>
+                    <div class="chart-wrapper">
+                        <canvas id="courseChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Year Distribution Chart -->
+                <div class="chart-card">
+                    <h3>Students by Year</h3>
+                    <div class="chart-wrapper">
+                        <canvas id="yearChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Attendance Chart -->
+                <div class="chart-card">
+                    <h3>Attendance Overview</h3>
+                    <div class="chart-wrapper">
+                        <canvas id="attendanceChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- GPA by Course Chart -->
+                <div class="chart-card">
+                    <h3>Average GPA by Course</h3>
+                    <div class="chart-wrapper">
+                        <canvas id="gpaByCourseChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Age Distribution Chart -->
+                <div class="chart-card">
+                    <h3>Age Distribution</h3>
+                    <div class="chart-wrapper">
+                        <canvas id="ageChart"></canvas>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2025 Student Record Management System. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- External Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="charts.js"></script>
+</body>
+
+</html>
